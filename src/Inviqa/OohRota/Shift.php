@@ -32,6 +32,12 @@ class Shift
     protected $date;
 
     /**
+     * @ManyToOne(targetEntity="Inviqa\OohRota\Schedule", inversedBy="shifts")
+     * @var Schedule
+     */
+    protected $schedule;
+
+    /**
      * @param \DateTime $date
      */
     public function __construct(\DateTime $date)

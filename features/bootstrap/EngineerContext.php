@@ -136,9 +136,9 @@ class EngineerContext implements Context, Notifier
     }
 
     /**
-     * @Given there is a schedule defined containing several months of shifts
+     * @Given there are several months of schedules
      */
-    public function thereIsAScheduleDefinedContainingSeveralMonthsOfShifts()
+    public function thereAreSeveralMonthsOfSchedules()
     {
         throw new PendingException();
     }

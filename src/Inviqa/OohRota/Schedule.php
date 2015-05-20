@@ -14,23 +14,33 @@ class Schedule
     protected $id;
 
     /**
+     * @ManyToMany(targetEntity="Inviqa\OohRota\User\Engineer")
      * @var Engineer[]
      */
     private $engineers;
 
     /**
-     * @var Month
+     * @OneToMany(targetEntity="Inviqa\OohRota\Shift", mappedBy="schedule")
+     * @var Shift[]
      */
-    private $month;
+    private $shifts;
 
     /**
-     * @param Engineer[] $engineers
-     * @param Month $month
+     * @Column(type="datetime")
+     * @var \DateTime
      */
-    public function __construct(array $engineers, Month $month)
+    private $date;
+
+    /**
+     * @param \DateTime $date
+     * @param Engineer[] $engineers
+     * @param Shift[] $shifts
+     */
+    public function __construct(\DateTime $date, array $engineers, array $shifts)
     {
         $this->engineers = $engineers;
-        $this->month = $month;
+        $this->shifts = $shifts;
+        $this->date = $date;
     }
 
     /**
@@ -42,10 +52,18 @@ class Schedule
     }
 
     /**
-     * @return Month
+     * @return string
      */
     public function getMonth()
     {
-        return $this->month;
+        return $this->date->format('m');
+    }
+
+    /**
+     * @return string
+     */
+    public function getYear()
+    {
+        return $this->date->format('Y');
     }
 }

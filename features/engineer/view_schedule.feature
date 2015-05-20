@@ -4,7 +4,7 @@ Feature: View shift schedule
   I want to be able to view thw shift schedule
 
   Background:
-    Given there is a schedule defined containing several months of shifts
+    Given there are several months of schedules
     And there is an engineer called "Bob"
 
   Scenario: View a list of months
